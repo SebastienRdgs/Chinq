@@ -40,4 +40,9 @@ services:
       - "80:80"
       - "443:443"
 
-
+  node:
+    build:
+      context: ./docker/node
+    volumes:
+        - ./:/var/www
+    command: bash -c "yarn && yarn dev"
