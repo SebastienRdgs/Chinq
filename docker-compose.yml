@@ -44,4 +44,4 @@ services:
     build:
       context: ./docker/node
     volumes:
-        - ./:/var/www
+      - ./:/var/www
