@@ -1,5 +1,30 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Home pouet pouet</h1>
+    <h1>Home - Chinq</h1>
+    <p> {{ items|length }} items in database</p>
+
+    <div class="container">
+        <div class="row">
+            {% for item in items %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <div class="card-text">
+                            <ul>
+                            <li>Type : {{ item.type }}</li>
+                            <li>Profession : {{ item.profession }}</li>
+                            <li>Color : {{ item.color }}</li>
+                                <li>Monster : {{ item.monster }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
 {% endblock %}
