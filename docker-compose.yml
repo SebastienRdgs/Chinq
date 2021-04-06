@@ -45,4 +45,4 @@ services:
       context: ./docker/node
     volumes:
         - ./:/var/www
-    command: bash -c "yarn && yarn dev"
+#    command: bash -c "yarn && yarn dev"
