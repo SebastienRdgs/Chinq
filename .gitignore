@@ -9,3 +9,6 @@
 /vendor/
 /node_modules/
 ###< symfony/framework-bundle ###
+
+### IDE
+.idea/
