@@ -2,11 +2,11 @@
 
 {% block body %}
     <h1>Home - Chinq</h1>
-    <p> {{ items|length }} items in database</p>
+    <p> {{ cards|length }} cards in database</p>
 
     <div class="container">
         <div class="row">
-            {% for item in items %}
+            {% for item in cards %}
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.name }}</h5>
