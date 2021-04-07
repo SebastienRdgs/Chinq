@@ -8,23 +8,21 @@
         <div class="row">
             {% for item in items|slice(0, 1000) %}
                 <div class="card" style="width: 18rem;">
+                    <a href="{{ path('item', {item: item.id}) }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.name }}</h5>
                         <div class="card-text">
                             <ul>
                             <li>Type : {{ item.type }}</li>
                             <li>Level : {{ item.level }}</li>
-{#                            <li><img src="{{ asset('images/items/40/' ~ item.imgUrl ~ '.png') }}" alt="Symfony!"/></li>#}
-                            <li><img src="https://cdn.jsdelivr.net/gh/StonyTV/dofus-temporis-v-cards@latest/items/40/{{ item.itemId }}.png" alt="{{ item.imgUrl }}.png"></li>
+                            <li><img src="{{ asset('images/items/40/' ~ item.itemId ~ '.png') }}" alt="Symfony!"/></li>
                             </ul>
                         </div>
                     </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
     </div>
-
-
-
 
 {% endblock %}
