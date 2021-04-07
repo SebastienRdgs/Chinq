@@ -2,20 +2,20 @@
 
 {% block body %}
     <h1>Home - Chinq</h1>
-    <p> {{ cards|length }} cards in database</p>
+    <p> {{ items|length }} items in database. Only showing the first 1000</p>
 
     <div class="container">
         <div class="row">
-            {% for item in cards %}
+            {% for item in items|slice(0, 1000) %}
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.name }}</h5>
                         <div class="card-text">
                             <ul>
                             <li>Type : {{ item.type }}</li>
-                            <li>Profession : {{ item.profession }}</li>
-                            <li>Color : {{ item.color }}</li>
-                                <li>Monster : {{ item.monster }}</li>
+                            <li>Level : {{ item.level }}</li>
+{#                            <li><img src="{{ asset('images/items/40/' ~ item.imgUrl ~ '.png') }}" alt="Symfony!"/></li>#}
+                            <li><img src="https://cdn.jsdelivr.net/gh/StonyTV/dofus-temporis-v-cards@latest/items/40/{{ item.itemId }}.png" alt="{{ item.imgUrl }}.png"></li>
                             </ul>
                         </div>
                     </div>

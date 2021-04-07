@@ -4,7 +4,7 @@
 namespace App\Command;
 
 
-use App\Entity\Cards;
+use App\Entity\Card;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -32,10 +32,10 @@ class CardsImportCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $items = $this->entityManager->getRepository(Cards::class)->findAll();
+        $items = $this->entityManager->getRepository(Card::class)->findAll();
 
-        foreach ($items as $item) {
-            $this->entityManager->remove($item);
+        foreach ($items as $card) {
+            $this->entityManager->remove($card);
         }
         $this->entityManager->flush();
 
@@ -52,29 +52,29 @@ class CardsImportCommand extends Command
             try {
 
                 $data = (array) $data;
-                $item = new Cards();
+                $card = new Card();
 
-                $item
+                $card
                     ->setItemId($data['id'])
                     ->setName($data['name'])
                     ->setType($data['type'])
                 ;
 
                 if (isset($data['color'])) {
-                    $item->setColor($data['color']);
+                    $card->setColor($data['color']);
                 }
 
                 if (isset($data['profession'])) {
-                    $item->setProfession($data['profession']);
+                    $card->setProfession($data['profession']);
                 }
 
                 if (isset($data['monster'])) {
-                    $item->setMonster($data['monster']);
+                    $card->setMonster($data['monster']);
                 }
 
-                $this->entityManager->persist($item);
+                $this->entityManager->persist($card);
             } catch (\Exception $e) {
-                $output->writeln('<error>Error on item ' . $data->{'id'} . ' : ' . $e->getMessage() . '</error>');
+                $output->writeln('<error>Error on card ' . $data->{'id'} . ' : ' . $e->getMessage() . '</error>');
             }
         }
 

@@ -4,7 +4,8 @@
 namespace App\Controller;
 
 
-use App\Entity\Cards;
+use App\Entity\Card;
+use App\Entity\Item;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,10 +24,10 @@ class HomeController extends AbstractController
 
     public function __invoke(): Response
     {
-        $cards = $this->em->getRepository(Cards::class)->findAll();
+        $items = $this->em->getRepository(Item::class)->findAll();
 
         return $this->render('home/index.html.twig', [
-            'cards' => $cards,
+            'items' => $items,
         ]);
     }
 }

@@ -9,9 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Entity
  *
  * @ORM\Entity()
- * @ORM\Table(name="card")
+ * @ORM\Table(name="item")
  */
-class Cards
+class Item
 {
     /**
      * @var int|null
@@ -39,9 +39,16 @@ class Cards
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
      */
-    protected $color;
+    protected $imgUrl;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $level;
 
     /**
      * @var string
@@ -53,16 +60,9 @@ class Cards
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
      */
-    protected $profession;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $monster;
+    protected $cat;
 
     /**
      * @return int|null
@@ -83,7 +83,7 @@ class Cards
     /**
      * @param int $itemId
      */
-    public function setItemId(int $itemId): Cards
+    public function setItemId(int $itemId): Item
     {
         $this->itemId = $itemId;
 
@@ -101,7 +101,7 @@ class Cards
     /**
      * @param string $name
      */
-    public function setName(string $name): Cards
+    public function setName(string $name): Item
     {
         $this->name = $name;
 
@@ -111,17 +111,36 @@ class Cards
     /**
      * @return string
      */
-    public function getColor(): ?string
+    public function getImgUrl(): string
     {
-        return $this->color;
+        return $this->imgUrl;
     }
 
     /**
-     * @param string $color
+     * @param string $imgUrl
      */
-    public function setColor(string $color): Cards
+    public function setImgUrl(string $imgUrl): Item
     {
-        $this->color = $color;
+        $this->imgUrl = $imgUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLevel(): int
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel(int $level): Item
+    {
+        $this->level = $level;
+
         return $this;
     }
 
@@ -136,43 +155,28 @@ class Cards
     /**
      * @param string $type
      */
-    public function setType(string $type): Cards
+    public function setType(string $type): Item
     {
         $this->type = $type;
+
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getProfession(): ?string
+    public function getCat(): string
     {
-        return $this->profession;
+        return $this->cat;
     }
 
     /**
-     * @param string $profession
+     * @param string $cat
      */
-    public function setProfession(string $profession): Cards
+    public function setCat(string $cat): Item
     {
-        $this->profession = $profession;
-        return $this;
-    }
+        $this->cat = $cat;
 
-    /**
-     * @return string|null
-     */
-    public function getMonster(): ?string
-    {
-        return $this->monster;
-    }
-
-    /**
-     * @param string|null $monster
-     */
-    public function setMonster(?string $monster): Cards
-    {
-        $this->monster = $monster;
         return $this;
     }
 }
