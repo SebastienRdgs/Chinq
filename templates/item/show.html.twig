@@ -5,7 +5,9 @@
     <div class="container">
         <div class="row">
             <h1>{{ item.name }}</h1>
-            <img src="{{ asset('images/items/40/' ~ item.itemId ~ '.png') }}" alt="Symfony!"/>
+        </div>
+        <div class="row">
+            <img src="https://cdn.jsdelivr.net/gh/StonyTV/dofus-temporis-v-cards@latest/items/200/{{ item.itemId }}.png" alt="Symfony!"/>
         </div>
     </div>
-{% endblock %}
+{% endblock %}s
